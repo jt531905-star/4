@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>当店の想い - 古の粋</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .brand-section {
+            display: flex;
+            align-items: center;
+            gap: 60px;
+            margin-bottom: 80px;
+        }
+
+        .brand-section:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+
+        .brand-text {
+            flex: 1;
+        }
+
+        .brand-image {
+            flex: 1;
+            height: 400px;
+            background-color: #333;
+            /* Placeholder */
+            border: 1px solid var(--color-accent);
+            position: relative;
+        }
+
+        .brand-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .brand-image::after {
+            content: '';
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            right: -20px;
+            bottom: -20px;
+            border: 1px solid var(--color-accent);
+            z-index: -1;
+        }
+
+        .brand-section:nth-child(even) .brand-image::after {
+            left: -20px;
+            right: 20px;
+        }
+
+        h2 {
+            font-family: var(--font-main);
+            font-size: 2rem;
+            color: var(--color-accent);
+            margin-bottom: 30px;
+            border-bottom: 1px solid var(--color-accent-deep);
+            display: inline-block;
+            padding-bottom: 10px;
+        }
+
+        p {
+            margin-bottom: 20px;
+            text-align: justify;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div class="container">
+            <h1 class="site-title">古の粋</h1>
+            <nav>
+                <ul>
+                    <li><a href="index.html">ホーム</a></li>
+                    <li><a href="brand.html" class="active">当店の想い</a></li>
+                    <li><a href="knowledge.html">骨董の知識</a></li>
+                    <li><a href="products.html">商品一覧</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container" style="padding: 80px 20px;">
+
+        <section class="brand-section">
+            <div class="brand-text">
+                <h2>一期一会の精神</h2>
+                <p>「古の粋」では、長い時を経て今に伝わる骨董品の一つひとつに、物語があると考えています。</p>
+                <p>それは、かつての持ち主の想いであり、職人の技であり、時代の空気そのものです。</p>
+                <p>私たちは、そんな「物」と「人」との一期一会の出会いを大切にし、皆様の暮らしに深みと彩りを添えるお手伝いをさせていただきます。</p>
+            </div>
+            <div class="brand-image">
+                <img src="assets/store.png" alt="店内の様子">
+            </div>
+        </section>
+
+        <section class="brand-section">
+            <div class="brand-text">
+                <h2>店主のこだわり</h2>
+                <p>私は幼い頃から、祖父の家の蔵で古い道具に触れるのが好きでした。</p>
+                <p>時を経たものだけが持つ、独特の肌触り、色艶、そして佇まい。それらは決して新品には出せない魅力です。</p>
+                <p>日本全国、時には海外まで足を運び、心から「美しい」と思えるものだけを厳選して集めております。</p>
+                <p>どうぞ、ゆっくりとご覧ください。</p>
+            </div>
+            <div class="brand-image">
+                <img src="assets/owner.png" alt="店主のポートレート">
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 古の粋 Inishie no Iki. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+</body>
+
+</html>

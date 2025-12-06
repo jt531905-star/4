@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>商品詳細 - 古の粋</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .product-detail {
+            display: flex;
+            gap: 60px;
+            margin-top: 60px;
+            align-items: flex-start;
+        }
+
+        @media (max-width: 768px) {
+            .product-detail {
+                flex-direction: column;
+            }
+        }
+
+        .detail-image {
+            flex: 1;
+            width: 100%;
+            border: 1px solid var(--color-accent);
+            padding: 10px;
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        .detail-image img {
+            width: 100%;
+            display: block;
+        }
+
+        .detail-info {
+            flex: 1;
+        }
+
+        .detail-name {
+            font-family: var(--font-main);
+            font-size: 2rem;
+            color: var(--color-accent);
+            margin-bottom: 20px;
+        }
+
+        .detail-price {
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+            display: block;
+        }
+
+        .detail-desc {
+            margin-bottom: 40px;
+            line-height: 2;
+            color: #ddd;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-top: 40px;
+            color: #888;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div class="container">
+            <h1 class="site-title">古の粋</h1>
+            <nav>
+                <ul>
+                    <li><a href="index.html">ホーム</a></li>
+                    <li><a href="brand.html">当店の想い</a></li>
+                    <li><a href="knowledge.html">骨董の知識</a></li>
+                    <li><a href="products.html">商品一覧</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container" style="padding: 80px 20px;">
+        <div id="detail-container">
+            <!-- Content injected by JS -->
+        </div>
+        <a href="products.html" class="back-link">&larr; 商品一覧に戻る</a>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 古の粋 Inishie no Iki. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        const params = new URLSearchParams(window.location.search);
+        const id = parseInt(params.get('id'));
+        const product = products.find(p => p.id === id);
+        const container = document.getElementById('detail-container');
+
+        if (product) {
+            container.innerHTML = `
+                <div class="product-detail">
+                    <div class="detail-image">
+                        <img src="${product.image}" alt="${product.name}">
+                    </div>
+                    <div class="detail-info">
+                        <h2 class="detail-name">${product.name}</h2>
+                        <span class="detail-price">¥${product.price.toLocaleString()}</span>
+                        <div class="detail-desc">
+                            <p>${product.description}</p>
+                            <br>
+                            <p>サイズ: ${product.size || '不明'}</p>
+                            <p>時代: ${product.era || '不明'}</p>
+                        </div>
+                        <button class="btn" onclick="alert('申し訳ありません。現在オンラインでの購入は準備中です。店舗までお問い合わせください。')">購入について問い合わせる</button>
+                    </div>
+                </div>
+            `;
+        } else {
+            container.innerHTML = '<p>商品が見つかりませんでした。</p>';
+        }
+    </script>
+</body>
+
+</html>

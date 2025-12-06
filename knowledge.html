@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>骨董の知識 - 古の粋</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .knowledge-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-top: 60px;
+        }
+
+        .knowledge-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(197, 160, 89, 0.3);
+            padding: 30px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .knowledge-card:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: var(--color-accent);
+            transform: translateY(-5px);
+        }
+
+        .knowledge-card h3 {
+            font-family: var(--font-main);
+            color: var(--color-accent);
+            margin-bottom: 15px;
+            font-size: 1.4rem;
+        }
+
+        .knowledge-card .summary {
+            font-size: 1rem;
+            color: #ccc;
+        }
+
+        .knowledge-card .details {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease, opacity 0.5s ease;
+            opacity: 0;
+            margin-top: 0;
+        }
+
+        .knowledge-card.active .details {
+            max-height: 500px;
+            /* Arbitrary large height */
+            opacity: 1;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px dashed rgba(197, 160, 89, 0.3);
+        }
+
+        .toggle-icon {
+            position: absolute;
+            top: 30px;
+            right: 30px;
+            color: var(--color-accent);
+            font-size: 1.2rem;
+            transition: transform 0.3s ease;
+        }
+
+        .knowledge-card.active .toggle-icon {
+            transform: rotate(45deg);
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div class="container">
+            <h1 class="site-title">古の粋</h1>
+            <nav>
+                <ul>
+                    <li><a href="index.html">ホーム</a></li>
+                    <li><a href="brand.html">当店の想い</a></li>
+                    <li><a href="knowledge.html" class="active">骨董の知識</a></li>
+                    <li><a href="products.html">商品一覧</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container" style="padding: 80px 20px;">
+        <h2 style="text-align: center; font-family: var(--font-main); font-size: 2.5rem; margin-bottom: 20px;">骨董の知識
+        </h2>
+        <p style="text-align: center; margin-bottom: 60px;">知れば知るほど、愛着が湧く。骨董の世界へようこそ。</p>
+
+        <div class="knowledge-grid">
+            <!-- Card 1 -->
+            <div class="knowledge-card" onclick="toggleCard(this)">
+                <div class="toggle-icon">+</div>
+                <h3>古伊万里の見分け方</h3>
+                <p class="summary">江戸時代に有田で焼かれた磁器、古伊万里。その特徴と時代の見極め方をご紹介します。</p>
+                <div class="details">
+                    <p>古伊万里は、江戸時代に肥前国（現在の佐賀県・長崎県）で生産された磁器の総称です。</p>
+                    <br>
+                    <p><strong>初期伊万里（1610年代〜1650年代）</strong>：素地が厚く、染付の発色が不安定で、素朴な味わいがあります。</p>
+                    <p><strong>柿右衛門様式（1640年代〜）</strong>：乳白色の素地（濁手）に、赤・黄・緑・青などの色絵が施された優美なスタイル。</p>
+                    <p><strong>金襴手（1680年代〜）</strong>：染付に赤や金をふんだんに使った豪華絢爛な様式。輸出用として人気を博しました。</p>
+                    <br>
+                    <p>高台（器の底）の砂付着や、釉薬の溜まり具合なども鑑定のポイントになります。</p>
+                </div>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="knowledge-card" onclick="toggleCard(this)">
+                <div class="toggle-icon">+</div>
+                <h3>漆器の時代区分</h3>
+                <p class="summary">使い込むほどに艶が増す漆器。時代ごとの技法や流行を知ることで、より深く楽しめます。</p>
+                <div class="details">
+                    <p>日本の漆器は、縄文時代から続く長い歴史を持ちます。</p>
+                    <br>
+                    <p><strong>桃山時代</strong>：高台寺蒔絵に代表される、平蒔絵を主体とした華やかで斬新なデザインが特徴。</p>
+                    <p><strong>江戸時代</strong>：技術が成熟し、印籠や根付などの細密工芸が発達しました。各藩で産業として奨励され、多様な産地が形成されました。</p>
+                    <p><strong>明治時代</strong>：政府の輸出振興策により、超絶技巧を駆使した精緻な作品が作られ、海外で高く評価されました。</p>
+                    <br>
+                    <p>古い漆器は、経年による「透け」や「断文（ひび割れ）」も味わいの一つとして愛でられます。</p>
+                </div>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="knowledge-card" onclick="toggleCard(this)">
+                <div class="toggle-icon">+</div>
+                <h3>茶道具の楽しみ方</h3>
+                <p class="summary">茶道に使われる道具たち。「見立て」の心で、日常に取り入れる楽しみ方をご提案します。</p>
+                <div class="details">
+                    <p>茶道具は、本来の用途以外にも自由に楽しむことができます。</p>
+                    <br>
+                    <p><strong>抹茶碗</strong>：小鉢として料理を盛ったり、カフェオレボウルとして使ったり。</p>
+                    <p><strong>水指</strong>：花器として季節の花を活けたり、ワインクーラーとして使うのも粋です。</p>
+                    <p><strong>香合</strong>：アクセサリーケースや、薬味入れとして食卓に。</p>
+                    <br>
+                    <p>形式にとらわれず、自分の感性で「見立て」て使うことこそ、現代における骨董の醍醐味と言えるでしょう。</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 古の粋 Inishie no Iki. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

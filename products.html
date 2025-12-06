@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>商品一覧 - 古の粋</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 40px;
+            margin-top: 60px;
+        }
+
+        .product-card {
+            border: 1px solid rgba(197, 160, 89, 0.3);
+            background: rgba(26, 26, 26, 0.6);
+            transition: all 0.3s ease;
+        }
+
+        .product-card:hover {
+            border-color: var(--color-accent);
+            transform: translateY(-5px);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            display: block;
+            background-color: #333;
+        }
+
+        .product-info {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .product-name {
+            font-family: var(--font-main);
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            color: var(--color-text);
+        }
+
+        .product-price {
+            color: var(--color-accent);
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .btn-sm {
+            padding: 8px 20px;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div class="container">
+            <h1 class="site-title">古の粋</h1>
+            <nav>
+                <ul>
+                    <li><a href="index.html">ホーム</a></li>
+                    <li><a href="brand.html">当店の想い</a></li>
+                    <li><a href="knowledge.html">骨董の知識</a></li>
+                    <li><a href="products.html" class="active">商品一覧</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container" style="padding: 80px 20px;">
+        <h2 style="text-align: center; font-family: var(--font-main); font-size: 2.5rem; margin-bottom: 20px;">商品一覧</h2>
+        <p style="text-align: center; margin-bottom: 60px;">一期一会の出会い。あなただけの逸品をお探しください。</p>
+
+        <div class="product-grid" id="product-list">
+            <!-- Products will be injected by JS -->
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 古の粋 Inishie no Iki. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // Render products
+        const productList = document.getElementById('product-list');
+        products.forEach(p => {
+            const card = document.createElement('div');
+            card.className = 'product-card';
+            card.innerHTML = `
+                <img src="${p.image}" alt="${p.name}" class="product-image">
+                <div class="product-info">
+                    <h3 class="product-name">${p.name}</h3>
+                    <span class="product-price">¥${p.price.toLocaleString()}</span>
+                    <p style="font-size: 0.9rem; margin-bottom: 15px; color: #aaa;">${p.shortDesc}</p>
+                    <a href="product-detail.html?id=${p.id}" class="btn btn-sm">詳細を見る</a>
+                </div>
+            `;
+            productList.appendChild(card);
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,176 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;500;700&family=Shippori+Mincho:wght@400;600&display=swap');
+
+:root {
+    --color-bg: #1a1a1a; /* Dark Ink */
+    --color-text: #f0f0f0; /* Off-white */
+    --color-accent: #c5a059; /* Matte Gold */
+    --color-accent-deep: #8a1c1c; /* Deep Red */
+    --font-main: 'Shippori Mincho', serif;
+    --font-body: 'Noto Serif JP', serif;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    font-family: var(--font-body);
+    line-height: 1.8;
+    overflow-x: hidden;
+}
+
+/* Kimono Pattern Background (Seigaiha - Blue Ocean Waves, adapted to dark theme) */
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background-color: #1a1a1a;
+    background-image: 
+        radial-gradient(circle at 50% 100%, #2a2a2a 10%, transparent 11%),
+        radial-gradient(circle at 50% 0%, #2a2a2a 10%, transparent 11%),
+        radial-gradient(circle at 50% 100%, #2a2a2a 10%, transparent 11%),
+        radial-gradient(circle at 50% 0%, #2a2a2a 10%, transparent 11%);
+    background-size: 60px 60px;
+    background-position: 0 0, 30px 30px, 30px 0, 0 30px;
+    opacity: 0.3; /* Subtle texture */
+    pointer-events: none;
+}
+
+/* Utility Classes */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: var(--color-accent);
+}
+
+/* Header */
+header {
+    padding: 40px 0;
+    text-align: center;
+    border-bottom: 1px solid rgba(197, 160, 89, 0.3);
+    position: relative;
+}
+
+.site-title {
+    font-family: var(--font-main);
+    font-size: 3rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    color: var(--color-accent);
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+
+.site-subtitle {
+    font-size: 1rem;
+    letter-spacing: 0.1em;
+    opacity: 0.8;
+}
+
+nav ul {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    margin-top: 30px;
+    gap: 40px;
+}
+
+nav a {
+    font-family: var(--font-main);
+    font-size: 1.1rem;
+    position: relative;
+    padding-bottom: 5px;
+}
+
+nav a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background-color: var(--color-accent);
+    transition: width 0.3s ease;
+}
+
+nav a:hover::after {
+    width: 100%;
+}
+
+/* Hero Section */
+.hero {
+    height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-content {
+    z-index: 1;
+    padding: 60px;
+    border: 1px solid var(--color-accent);
+    background: rgba(26, 26, 26, 0.8);
+    backdrop-filter: blur(5px);
+    max-width: 800px;
+}
+
+.hero h2 {
+    font-family: var(--font-main);
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    line-height: 1.4;
+}
+
+.hero p {
+    font-size: 1.2rem;
+    margin-bottom: 40px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 15px 40px;
+    border: 1px solid var(--color-accent);
+    color: var(--color-accent);
+    font-family: var(--font-main);
+    font-size: 1.1rem;
+    letter-spacing: 0.1em;
+    transition: all 0.3s ease;
+    background: transparent;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background-color: var(--color-accent);
+    color: var(--color-bg);
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 40px 0;
+    border-top: 1px solid rgba(197, 160, 89, 0.3);
+    margin-top: 80px;
+    font-size: 0.9rem;
+    opacity: 0.7;
+}
